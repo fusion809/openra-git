@@ -4,7 +4,7 @@
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
 pkgname=openra-git
 _pkgname=OpenRA
-pkgver=79ec85b
+pkgver=20160904.10
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL"
 arch=('any')
@@ -22,7 +22,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  git rev-parse --short=7 HEAD
+  _basever="$(git describe --tags `git rev-list --tags --max-count=1`)"
+  _commitno="$(git rev-list --count ${_basever}..HEAD)"
+  printf "${_basever//playtest-/}.${_commitno}"
 }
 
 build() {
