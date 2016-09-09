@@ -30,9 +30,7 @@ pkgver() {
 build() {
   cd OpenRA
 
-  make dependencies
-  make core
-  make tools
+  make all
 }
 
 package() {
@@ -42,4 +40,5 @@ package() {
   make prefix=/usr DESTDIR="$pkgdir" install-linux-shortcuts
   make prefix=/usr DESTDIR="$pkgdir" install-linux-mime
   make prefix=/usr DESTDIR="$pkgdir" install-linux-appdata
+  make prefix=/usr DESTDIR="$pkgdir" install-man-page
 }
