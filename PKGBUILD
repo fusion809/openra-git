@@ -4,7 +4,7 @@
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
 pkgname=openra-git
 _pkgname=OpenRA
-pkgver=20161001.226
+pkgver=20161001.256
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL"
 arch=('any')
