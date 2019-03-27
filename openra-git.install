@@ -1,6 +1,7 @@
 post_upgrade() {
     update-desktop-database -q
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    gtk-update-icon-cache -q -t -f usr/share/pixmaps
 }
 
 post_install() {
@@ -8,6 +9,8 @@ post_install() {
     echo "Graphics:"
     echo "        Renderer: Cg"
     echo "Be careful to only use one indenting tab with 8 shift width."
+    echo "Note this includes the Tiberian Sun mod, which is very experimental."
+    echo "Report bugs at https://github.com/OpenRA/OpenRA/issues."
     post_upgrade
 }
 
