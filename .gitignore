@@ -3,3 +3,5 @@ src
 OpenRA
 *.xz
 .SRCINFO
+*.gz
+Changelog.md

@@ -11,7 +11,7 @@ install=${pkgname}.install
 depends=('mono' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'desktop-file-utils' 'xdg-utils' 'zenity')
 makedepends=('dos2unix')
 provides=('openra')
-conflicts=('openra')
+conflicts=('openra' 'openra-bleed')
 options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
 "http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz"
