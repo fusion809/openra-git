@@ -10,7 +10,6 @@ license=('GPL3')
 install=${pkgname}.install
 depends=('mono' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'desktop-file-utils' 'xdg-utils' 'zenity')
 makedepends=('dos2unix')
-provides=('openra')
 conflicts=('openra' 'openra-bleed')
 options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
@@ -32,13 +31,11 @@ prepare() {
 	git checkout cadcbdf638266d3c785e969e49801c79e8fb7f53
     cp $srcdir/Changelog.md .
     dos2unix Changelog.md
-    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/OpenRA
-    mkdir -p thirdparty/download
-    cp $srcdir/GeoLite2-Country.mmdb.gz thirdparty/download
+    make version VERSION="${pkgver}"
     make dependencies
     make core SDK="-sdk:4.5"
 }
