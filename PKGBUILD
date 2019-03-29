@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-git
-pkgver=25838.git.cadcbdf
+pkgver=25840.git.19977bb
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot"
 arch=('any')
@@ -19,16 +19,15 @@ sha256sums=('SKIP'
             '146df390479eaf249a1b390530b88151cb9ef1f85b52c2baa071ffee46dc770b'
             '28798bd8ff9c696524812b33122df591daf03baa03619a8f612f25d10d90e371')
 
-#pkgver() {
-#	cd $srcdir/OpenRA
-#	no=$(git rev-list --count HEAD)
-#	hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
-#	printf "${no}.git.${hash}"
-#}
+pkgver() {
+	cd $srcdir/OpenRA
+	no=$(git rev-list --count HEAD)
+	hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
+	printf "${no}.git.${hash}"
+}
 
 prepare() {
     cd OpenRA
-	git checkout cadcbdf638266d3c785e969e49801c79e8fb7f53
     cp $srcdir/Changelog.md .
     dos2unix Changelog.md
 }
