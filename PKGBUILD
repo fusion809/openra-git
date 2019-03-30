@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
-pkgname=openra-git
-pkgver=25840.git.19977bb
+pkgname=openra-bleed
+pkgver=25857.git.9cbf082
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot"
 arch=('any')
