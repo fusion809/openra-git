@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-bleed
-pkgver=25857.git.9cbf082
+pkgver=25863.git.25bc3ae
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot"
 arch=('any')
@@ -13,7 +13,6 @@ makedepends=('dos2unix')
 conflicts=('openra' 'openra-bleed')
 options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
-"https://github.com/OpenRA/OpenRA/pull/16358.patch"
 "http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 sha256sums=('SKIP'
@@ -36,7 +35,6 @@ prepare() {
 
 build() {
     cd $srcdir/OpenRA
-	patch -Np1 -i $srcdir/16358.patch
     make version VERSION="${pkgver}"
     make dependencies
     make core SDK="-sdk:4.5"
