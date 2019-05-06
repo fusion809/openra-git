@@ -9,7 +9,7 @@ url="https://www.openra.net"
 license=('GPL3')
 install=${pkgname}.install
 depends=('mono' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'desktop-file-utils' 'xdg-utils' 'zenity')
-makedepends=('dos2unix')
+makedepends=('dos2unix' 'msbuild')
 conflicts=('openra' 'openra-bleed')
 options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
@@ -45,7 +45,7 @@ package() {
     make DESTDIR=${pkgdir} prefix=/usr install-linux-shortcuts
     make DESTDIR=${pkgdir} prefix=/usr install-linux-mime
     make DESTDIR=${pkgdir} prefix=/usr install-linux-appdata
-    make DESTDIR=${pkgdir} prefix=/usr install-man-page
+    #make DESTDIR=${pkgdir} prefix=/usr install-man-page
 
     rm $pkgdir/usr/lib/openra/*.sh
     cp -a mods/ts $pkgdir/usr/lib/openra/mods
