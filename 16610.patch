@@ -1,0 +1,73 @@
+From b55c5ab849997bea80ae051b01f62f3885443053 Mon Sep 17 00:00:00 2001
+From: abcdefg30 <alphabet@streber24.de>
+Date: Wed, 29 May 2019 09:11:54 +0200
+Subject: [PATCH] Fix WithSpriteBody crashes
+
+---
+ .../Traits/Render/WithEmbeddedTurretSpriteBody.cs          | 5 +++++
+ OpenRA.Mods.Cnc/Traits/Render/WithGunboatBody.cs           | 7 ++++++-
+ .../Traits/Render/WithResourceLevelSpriteBody.cs           | 4 ++--
+ 3 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/OpenRA.Mods.Cnc/Traits/Render/WithEmbeddedTurretSpriteBody.cs b/OpenRA.Mods.Cnc/Traits/Render/WithEmbeddedTurretSpriteBody.cs
+index 92fcf031cb9..58bc47a1d7f 100644
+--- a/OpenRA.Mods.Cnc/Traits/Render/WithEmbeddedTurretSpriteBody.cs
++++ b/OpenRA.Mods.Cnc/Traits/Render/WithEmbeddedTurretSpriteBody.cs
+@@ -58,6 +58,11 @@ public WithEmbeddedTurretSpriteBody(ActorInitializer init, WithSpriteBodyInfo in
+ 			: base(init, info, MakeTurretFacingFunc(init.Self))
+ 		{
+ 			turreted = init.Self.TraitsImplementing<Turreted>().FirstOrDefault();
++		}
++
++		protected override void TraitEnabled(Actor self)
++		{
++			base.TraitEnabled(self);
+ 			turreted.QuantizedFacings = DefaultAnimation.CurrentSequence.Facings;
+ 		}
+ 
+diff --git a/OpenRA.Mods.Cnc/Traits/Render/WithGunboatBody.cs b/OpenRA.Mods.Cnc/Traits/Render/WithGunboatBody.cs
+index b1e8cfc46f0..1d986f72cf6 100644
+--- a/OpenRA.Mods.Cnc/Traits/Render/WithGunboatBody.cs
++++ b/OpenRA.Mods.Cnc/Traits/Render/WithGunboatBody.cs
+@@ -62,13 +62,18 @@ public WithGunboatBody(ActorInitializer init, WithGunboatBodyInfo info)
+ 			var name = rs.GetImage(init.Self);
+ 			turret = init.Self.TraitsImplementing<Turreted>()
+ 				.First(t => t.Name == info.Turret);
+-			turret.QuantizedFacings = DefaultAnimation.CurrentSequence.Facings;
+ 
+ 			wake = new Animation(init.World, name);
+ 			wake.PlayRepeating(info.WakeLeftSequence);
+ 			rs.Add(new AnimationWithOffset(wake, null, null, -87));
+ 		}
+ 
++		protected override void TraitEnabled(Actor self)
++		{
++			base.TraitEnabled(self);
++			turret.QuantizedFacings = DefaultAnimation.CurrentSequence.Facings;
++		}
++
+ 		void ITick.Tick(Actor self)
+ 		{
+ 			if (facing.Facing <= 128)
+diff --git a/OpenRA.Mods.Common/Traits/Render/WithResourceLevelSpriteBody.cs b/OpenRA.Mods.Common/Traits/Render/WithResourceLevelSpriteBody.cs
+index 8d92b3b4399..92c67c44a3a 100644
+--- a/OpenRA.Mods.Common/Traits/Render/WithResourceLevelSpriteBody.cs
++++ b/OpenRA.Mods.Common/Traits/Render/WithResourceLevelSpriteBody.cs
+@@ -47,7 +47,6 @@ public WithResourceLevelSpriteBody(ActorInitializer init, WithResourceLevelSprit
+ 		{
+ 			this.info = info;
+ 			playerResources = init.Self.Owner.PlayerActor.Trait<PlayerResources>();
+-			ConfigureAnimation(init.Self);
+ 		}
+ 
+ 		void ConfigureAnimation(Actor self)
+@@ -65,7 +64,8 @@ void INotifyOwnerChanged.OnOwnerChanged(Actor self, Player oldOwner, Player newO
+ 
+ 		protected override void TraitEnabled(Actor self)
+ 		{
+-			// Do nothing - we just want to disable the default WithSpriteBody implementation
++			base.TraitEnabled(self);
++			ConfigureAnimation(self);
+ 		}
+ 
+ 		public override void CancelCustomAnimation(Actor self)
