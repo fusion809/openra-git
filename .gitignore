@@ -5,3 +5,4 @@ OpenRA
 .SRCINFO
 *.gz
 Changelog.md
+*.patch
