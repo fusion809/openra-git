@@ -1,7 +1,8 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-git
-pkgver=26151.git.c8a42cb
+pkgver=26155.git.9f59b00
+#_commit=44e41cc
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot"
 arch=('any')
@@ -21,9 +22,16 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd $srcdir/OpenRA
-	no=$(git rev-list --count HEAD)
-	hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
-	printf "${no}.git.${hash}"
+	if [[ -n ${_commit} ]]; then
+		git checkout ${_commit}
+		no=$(git rev-list --count ${_commit})
+		hash=${_commit}
+		printf ${no}.git.${_commit}
+	else
+		no=$(git rev-list --count HEAD)
+		hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
+		printf "${no}.git.${hash}"
+        fi
 }
 
 prepare() {
