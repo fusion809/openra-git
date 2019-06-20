@@ -15,11 +15,11 @@ conflicts=('openra' 'openra-bleed')
 options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
 "http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz"
-"https://github.com/OpenRA/OpenRA/commit/b59ae476e40fbb8072cfda54c6b6f2c758694f52.patch"
+"https://github.com/OpenRA/OpenRA/pull/16715.patch"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 sha256sums=('SKIP'
             '146df390479eaf249a1b390530b88151cb9ef1f85b52c2baa071ffee46dc770b'
-            '53a2553132661c41a32171f465d64edf79dcda9617d0ed16a254841382e955b2'
+            '051505351fb23e06e0032cc6f6d9fd89f568bcc4eea39a146acbc8312e87dd95'
             '28798bd8ff9c696524812b33122df591daf03baa03619a8f612f25d10d90e371')
 
 pkgver() {
@@ -40,7 +40,7 @@ prepare() {
     cd $srcdir/OpenRA
     cp $srcdir/Changelog.md .
     dos2unix Changelog.md
-    patch -NRp1 -i $srcdir/b59ae476e40fbb8072cfda54c6b6f2c758694f52.patch
+    patch -NRp1 -i $srcdir/16715.patch
 }
 
 build() {
