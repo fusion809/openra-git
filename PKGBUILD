@@ -40,7 +40,7 @@ prepare() {
     cd $srcdir/OpenRA
     cp $srcdir/Changelog.md .
     dos2unix Changelog.md
-    patch -NRp1 -i $srcdir/16715.patch
+    patch -Np1 -i $srcdir/16715.patch
 }
 
 build() {
