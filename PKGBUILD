@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-git
-pkgver=26156.git.db0c6d8
+pkgver=26157.git.1e23c0a
 #_commit=44e41cc
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot"
@@ -15,11 +15,9 @@ conflicts=('openra' 'openra-bleed')
 options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
 "http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz"
-"https://github.com/OpenRA/OpenRA/pull/16715.patch"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 sha256sums=('SKIP'
             '146df390479eaf249a1b390530b88151cb9ef1f85b52c2baa071ffee46dc770b'
-            '051505351fb23e06e0032cc6f6d9fd89f568bcc4eea39a146acbc8312e87dd95'
             '28798bd8ff9c696524812b33122df591daf03baa03619a8f612f25d10d90e371')
 
 pkgver() {
@@ -40,7 +38,6 @@ prepare() {
     cd $srcdir/OpenRA
     cp $srcdir/Changelog.md .
     dos2unix Changelog.md
-    patch -Np1 -i $srcdir/16715.patch
 }
 
 build() {
