@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-git
-pkgver=26295.git.207305e
+pkgver=26296.git.8c7ff3b
 #_commit=44e41cc
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot"
@@ -18,7 +18,7 @@ source=("git+https://github.com/OpenRA/OpenRA.git"
 "http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 sha256sums=('SKIP'
-            '3a23120877c9a1986735386df8970c8127739f238535c8ec944d962f7d14cc6c'
+            'a2543bd9ef1888545f68bfa20e64ed54e7ca1d61b468a1d30f3377bdc4eaf3bf'
             '146df390479eaf249a1b390530b88151cb9ef1f85b52c2baa071ffee46dc770b'
             '28798bd8ff9c696524812b33122df591daf03baa03619a8f612f25d10d90e371')
 
