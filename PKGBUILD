@@ -18,7 +18,7 @@ source=("git+https://github.com/OpenRA/OpenRA.git"
 "http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 sha256sums=('SKIP'
-            'e92daea394b70a9a903940a221c8331f50b2079b1991e575994d185e74fc2566'
+            '7766bb291358b03f68bb2dbaa712838ad8ead441aa959033e3fa632bd9bf2938'
             '146df390479eaf249a1b390530b88151cb9ef1f85b52c2baa071ffee46dc770b'
             '28798bd8ff9c696524812b33122df591daf03baa03619a8f612f25d10d90e371')
 
