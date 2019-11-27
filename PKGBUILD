@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-git
-pkgver=26591.git.6fb3dc0
+pkgver=26592.git.074ebef
 #_commit=44e41cc
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot"
