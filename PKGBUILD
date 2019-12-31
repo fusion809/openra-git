@@ -2,7 +2,7 @@
 
 pkgname=openra-git
 pkgver=26675.git.9d7ecdb
-#_commit=44e41cc
+#_commit=c55c65f
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot"
 arch=('any')
@@ -14,7 +14,8 @@ makedepends=('dos2unix' 'msbuild')
 conflicts=('openra' 'openra-bleed')
 options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
-"http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz"
+# Now GeoLite2-Country.mmdb.gz has to be downloaded manually by following the instructions here, https://dev.maxmind.com/geoip/geoipupdate/#Direct_Downloads
+"GeoLite2-Country.mmdb.gz"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 sha256sums=('SKIP'
             '146df390479eaf249a1b390530b88151cb9ef1f85b52c2baa071ffee46dc770b'
@@ -43,6 +44,8 @@ prepare() {
 build() {
     cd $srcdir/OpenRA
     make version VERSION="${pkgver}"
+    mkdir thirdparty/download
+    cp $srcdir/GeoLite2-Country.mmdb.gz thirdparty/download
     make dependencies
     make core SDK="-sdk:4.5"
 }
