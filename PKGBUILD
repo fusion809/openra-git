@@ -3,6 +3,7 @@
 pkgname=openra-git
 pkgver=26697.git.23b3c23
 #_commit=c55c65f
+_pr=17561
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot"
 arch=('any')
@@ -13,12 +14,21 @@ depends=('mono' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme'
 makedepends=('dos2unix' 'msbuild')
 conflicts=('openra' 'openra-bleed')
 options=(!strip)
+if [[ -n ${_pr} ]]; then
+source=("git+https://github.com/OpenRA/OpenRA.git"
+# Now GeoLite2-Country.mmdb.gz has to be downloaded manually by following the instructions here, https://dev.maxmind.com/geoip/geoipupdate/#Direct_Downloads
+"GeoLite2-Country.mmdb.gz"
+https://github.com/OpenRA/OpenRA/pull/${_pr}.patch
+"https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
+else
 source=("git+https://github.com/OpenRA/OpenRA.git"
 # Now GeoLite2-Country.mmdb.gz has to be downloaded manually by following the instructions here, https://dev.maxmind.com/geoip/geoipupdate/#Direct_Downloads
 "GeoLite2-Country.mmdb.gz"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
+fi
 sha256sums=('SKIP'
             '146df390479eaf249a1b390530b88151cb9ef1f85b52c2baa071ffee46dc770b'
+            'a67059ddb4f49e33c500e44fa93db2fef49953e9678954669efffdd2b89873db'
             '28798bd8ff9c696524812b33122df591daf03baa03619a8f612f25d10d90e371')
 
 pkgver() {
@@ -39,6 +49,9 @@ prepare() {
     cd $srcdir/OpenRA
     cp $srcdir/Changelog.md .
     dos2unix Changelog.md
+    if [[ -n "${_pr}" ]]; then
+    	patch -Np1 -i $srcdir/${_pr}.patch
+    fi
 }
 
 build() {
