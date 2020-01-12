@@ -7,3 +7,4 @@ OpenRA
 Changelog.md
 *.patch
 .*.swp
+octave-workspace
