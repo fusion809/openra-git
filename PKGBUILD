@@ -1,9 +1,9 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-git
-pkgver=26757.git.fdc0a6e
+pkgver=26758.git.6220d7e
 #_commit=c55c65f
-#_pr=17561
+_pr=17592
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot"
 arch=('any')
@@ -28,6 +28,7 @@ source=("git+https://github.com/OpenRA/OpenRA.git"
 fi
 sha256sums=('SKIP'
             '146df390479eaf249a1b390530b88151cb9ef1f85b52c2baa071ffee46dc770b'
+            '811c33c3f72e2b5f370065035a4bdc04ce73824eb76c83a525da150dd22895ff'
             '28798bd8ff9c696524812b33122df591daf03baa03619a8f612f25d10d90e371')
 
 pkgver() {
