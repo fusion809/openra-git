@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-git
-pkgver=26914.git.4a6fefa
+pkgver=26919.git.df4c363
 #_commit=c55c65f
 #_pr=17592
 pkgrel=1
