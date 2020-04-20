@@ -16,9 +16,6 @@ conflicts=('openra' 'openra-bleed')
 options=(!strip)
 if [[ -n ${_pr} ]]; then
 source=("git+https://github.com/OpenRA/OpenRA.git"
-# Now GeoLite2-Country.mmdb.gz has to be downloaded manually by following the instructions here, https://dev.maxmind.com/geoip/geoipupdate/#Direct_Downloads
-"GeoLite2-Country.mmdb.gz"
-https://github.com/OpenRA/OpenRA/pull/${_pr}.patch
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 else
 source=("git+https://github.com/OpenRA/OpenRA.git"
@@ -48,16 +45,11 @@ prepare() {
     cd $srcdir/OpenRA
     cp $srcdir/Changelog.md .
     dos2unix Changelog.md
-    if [[ -n "${_pr}" ]]; then
-    	patch -Np1 -i $srcdir/${_pr}.patch
-    fi
 }
 
 build() {
     cd $srcdir/OpenRA
     make version VERSION="${pkgver}"
-    mkdir thirdparty/download
-    cp $srcdir/GeoLite2-Country.mmdb.gz thirdparty/download
     make dependencies
     make core SDK="-sdk:4.5"
 }
