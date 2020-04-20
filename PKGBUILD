@@ -50,7 +50,6 @@ prepare() {
 build() {
     cd $srcdir/OpenRA
     make version VERSION="${pkgver}"
-    make dependencies
     make core SDK="-sdk:4.5"
 }
 
