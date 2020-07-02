@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-git
-pkgver=27260.git.e1523e9
+pkgver=27266.git.ae882b8
 #_commit=c55c65f
 #_pr=17592
 pkgrel=1
@@ -19,12 +19,9 @@ source=("git+https://github.com/OpenRA/OpenRA.git"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 else
 source=("git+https://github.com/OpenRA/OpenRA.git"
-# Now GeoLite2-Country.mmdb.gz has to be downloaded manually by following the instructions here, https://dev.maxmind.com/geoip/geoipupdate/#Direct_Downloads
-"GeoLite2-Country.mmdb.gz"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 fi
 sha256sums=('SKIP'
-            '146df390479eaf249a1b390530b88151cb9ef1f85b52c2baa071ffee46dc770b'
             '28798bd8ff9c696524812b33122df591daf03baa03619a8f612f25d10d90e371')
 
 pkgver() {
@@ -50,7 +47,8 @@ prepare() {
 build() {
     cd $srcdir/OpenRA
     make version VERSION="${pkgver}"
-    make core SDK="-sdk:4.5"
+#    make dependencies
+    make core
 }
 
 package() {
