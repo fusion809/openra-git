@@ -8,3 +8,4 @@ Changelog.md
 *.patch
 .*.swp
 octave-workspace
+*.zst
