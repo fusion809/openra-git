@@ -55,6 +55,7 @@ package() {
     make prefix=/usr DESTDIR="$pkgdir" install DEBUG=false RUNTIME=mono
     make prefix=/usr DESTDIR="$pkgdir" install-linux-shortcuts DEBUG=false   
     make prefix=/usr DESTDIR="$pkgdir" install-linux-appdata DEBUG=false
+    cp -r mods/ts $pkgdir/usr/lib/openra/mods
     cp $pkgdir/usr/bin/openra-ra $pkgdir/usr/bin/openra-ts
     cp $pkgdir/usr/share/applications/openra-ra.desktop $pkgdir/usr/share/applications/openra-ts.desktop
     sed -i -e "s|-ra|-ts|g" \
