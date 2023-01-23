@@ -1,6 +1,6 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
-pkgname=openra-git
+pkgname=openra-wts-git
 pkgver=29112.git.3dd1fd6
 #_commit=c55c65f
 #_pr=17592
@@ -13,7 +13,7 @@ install=${pkgname}.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
 makedepends=('git' 'unzip' 'mono-msbuild')
-conflicts=('openra' 'openra-bleed')
+conflicts=('openra' 'openra-bleed' 'openra-git')
 options=(!strip)
 if [[ -n ${_pr} ]]; then
 source=("git+https://github.com/OpenRA/OpenRA.git"
