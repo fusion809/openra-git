@@ -15,13 +15,8 @@ depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolo
 makedepends=('git' 'unzip' 'mono-msbuild')
 conflicts=('openra' 'openra-bleed' 'openra-git')
 options=(!strip)
-if [[ -n ${_pr} ]]; then
 source=("git+https://github.com/OpenRA/OpenRA.git"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
-else
-source=("git+https://github.com/OpenRA/OpenRA.git"
-"https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
-fi
 sha256sums=('SKIP'
             '28798bd8ff9c696524812b33122df591daf03baa03619a8f612f25d10d90e371')
 
