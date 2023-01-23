@@ -2,8 +2,6 @@
 
 pkgname=openra-wts-git
 pkgver=29112.git.3dd1fd6
-#_commit=c55c65f
-#_pr=17592
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot"
 arch=('any')
