@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-wts-git
-pkgver=29122.git.e1b78c4
+pkgver=29123.git.8be3ac8
 pkgrel=1
 pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot and with the Tiberian Sun mod included"
 arch=('any')
