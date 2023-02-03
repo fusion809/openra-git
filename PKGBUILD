@@ -3,8 +3,8 @@
 pkgname=openra-wts-git
 pkgver=29131.git.f5aa2f1
 pkgrel=1
-pkgdesc="An open-source recreation of the early Command & Conquer games, built from latest git snapshot and with the Tiberian Sun mod included"
-arch=('any')
+pkgdesc="OpenRA built from latest git commit and with the experimental Tiberian Sun mod included."
+arch=('x86_64')
 url="https://www.openra.net"
 license=('GPL3')
 install=${pkgname}.install
@@ -22,8 +22,8 @@ pkgver() {
     cd $srcdir/OpenRA
     no=$(git rev-list --count HEAD)
     hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
-    make version VERSION="${no}.git.${hash}"
-    printf "${no}.git.${hash}"
+    version="${no}.git.${hash}"
+    make version VERSION="${version}"
 }
 
 build() {
